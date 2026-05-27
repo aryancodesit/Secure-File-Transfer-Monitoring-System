@@ -24,7 +24,7 @@ VIOLATIONS_FILE = os.path.join(DATA_DIR, "violations.csv")
 BASELINE_FILE = os.path.join(DATA_DIR, "baseline_hashes.json")
 
 # Where generated reports are saved
-REPORTS_DIR = str(BASE_DIR / "reports")
+REPORTS_DIR = str(BASE_DIR / "data" / "reports")
 
 # ─── Monitoring settings ──────────────────────────────────────────────────────
 

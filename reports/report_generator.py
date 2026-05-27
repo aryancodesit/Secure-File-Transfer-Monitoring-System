@@ -11,6 +11,7 @@ from config import settings
 
 def generate_report():
     print("[SFTMS] Generating audit report...")
+    os.makedirs(settings.REPORTS_DIR, exist_ok=True)
     
     if not os.path.exists(settings.LOG_FILE):
         print(f"[SFTMS] No log file found at {settings.LOG_FILE}. Cannot generate report without logs.")
@@ -51,7 +52,9 @@ def generate_report():
         summary_data.append({"Metric": "Total violations", "Value": 0})
         
     if 'integrity_ok' in log_df:
-        integrity_failures = len(log_df[log_df['integrity_ok'] == False])
+        integrity_failures = len(
+            log_df[log_df['integrity_ok'].astype(str).str.strip().str.lower() == 'false']
+        )
         summary_data.append({"Metric": "Integrity failures", "Value": integrity_failures})
         
     summary_df = pd.DataFrame(summary_data)
@@ -68,7 +71,7 @@ def generate_report():
             hourly_df = pd.DataFrame({'Hour': hourly_counts.index, 'Event Count': hourly_counts.values})
             # Format Hour to a 24-hour string representation
             hourly_df['Hour'] = hourly_df['Hour'].apply(lambda x: f"{x:02d}:00")
-            log_df.drop(columns=['timestamp_dt'], inplace=True)
+            log_df = log_df.drop(columns=['timestamp_dt'])
         except Exception as e:
             print(f"[SFTMS] Could not process hourly activity: {e}")
 
