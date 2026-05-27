@@ -32,7 +32,7 @@ This project now also includes an interactive **Web Dashboard** to visualize sec
 ### 1. Installation
 Clone the repository and install the dependencies:
 ```bash
-git clone https://github.com/your-username/Secure-File-Transfer-Monitoring-System.git
+git clone https://github.com/aryancodesit/Secure-File-Transfer-Monitoring-System.git
 cd Secure-File-Transfer-Monitoring-System
 pip install -r requirements.txt
 ```
@@ -76,15 +76,6 @@ All configurations can be found in `config/settings.py`.
 - **`SMTP Settings`**: Configure environment variables (`SFTMS_SMTP_USER`, `SFTMS_SMTP_PASSWORD`, etc.) to enable real email alerting.
 
 ---
-
-## ☁️ Deployment
-
-**To Deploy the Web Dashboard (Streamlit Community Cloud):**
-1. Push this repository to GitHub.
-2. Go to [share.streamlit.io](https://share.streamlit.io/).
-3. Click **"New App"** -> **"Deploy a public app from GitHub"**.
-4. Select this repository and set the main file path to `app.py`.
-5. Click **Deploy**.
 
 **To Deploy the Background Monitor (Windows):**
 Use **NSSM (Non-Sucking Service Manager)** to wrap `main.py` as a permanent background Windows Service, ensuring the monitor auto-starts with the server and remains invisible.
